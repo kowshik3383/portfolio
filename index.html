@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Kowshik Valipireddy | Portfolio</title>
+  </head>
+
+  <body>
+    <script>
+      var TxtType = function (el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = "";
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtType.prototype.tick = function () {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) {
+          delta /= 2;
+        }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === "") {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        }
+
+        setTimeout(function () {
+          that.tick();
+        }, delta);
+      };
+
+      window.onload = function () {
+        var elements = document.getElementsByClassName("typewrite");
+        for (var i = 0; i < elements.length; i++) {
+          var toRotate = elements[i].getAttribute("data-type");
+          var period = elements[i].getAttribute("data-period");
+          if (toRotate) {
+            new TxtType(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+      };
+      const contactForm = document.querySelector('.messageForm');
+const contactButton = document.querySelector('.messageForm button');
+
+contactButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const senderName = document.querySelector('[name=""]').value;
+  const senderEmail = document.querySelector('[name="email"]').value;
+  const subject = document.querySelector('[name="subject"]').value;
+  const message = document.querySelector('textarea').value;
+
+  const mailtoLink = `mailto:kowshikvalipireddy@gmail.com?subject=${subject}&body=${encodeURIComponent(message)}\nName: ${senderName}\nEmail: ${senderEmail}`;
+
+  window.location.href = mailtoLink;
+});
+
+    </script>
+    <nav>
+      <div class="nav-logo">
+        <a href="#">
+          <img src="download.png" style="width: 100%; display: flex" />
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li class="link"><a href="#">Home</a></li>
+        <li id="link1" class="link"><a href="#About">About</a></li>
+        <li id="link2" class="link"><a href="#Skills">Skills</a></li>
+        <li id="link4" class="link">
+          <a href="#certificates">Certifications</a>
+        </li>
+        <li id="link5" class="link"><a href="#Skills">Contact</a></li>
+      </ul>
+      <button class="btn"  href="https://www.linkedin.com/in/kowshikvalipireddy/" >Hire Me</button>
+    </nav>
+
+    <header class="container">
+      <div class="content">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <h4>CREATE YOUR SITE LIKE A PRO</h4>
+        <h1>
+          Hi, I'm <span>Kowshik Valipireddy</span>,
+          <h1>
+            <a
+              href=""
+              class="typewrite"
+              data-period="2000"
+              data-type='[ "Full Stack Developer", "Mern Stack Developer", "Front-end Developer", "Wordpress Developer" ]'
+            >
+              <span class="wrap"></span>
+            </a>
+          </h1>
+        </h1>
+
+        <p>
+          I'm Kowshik Valipireddy, a skilled web developer with a passion for
+          creating elegant and user-friendly websites. I specialize in crafting
+          high-performance websites that are visually appealing, easy to
+          navigate, and optimized for search engines. With my expertise in HTML,
+          CSS, JavaScript, and various frameworks, as well as backend
+          development and API integration, I can bring your website vision to
+          life.
+        </p>
+        <a href="https://www.linkedin.com/in/kowshikvalipireddy/"
+          ><i class="fa-brands fa-linkedin" style="color: #090a0d"></i
+        ></a>
+      </div>
+      <div class="image">
+        <img src="images/header.png" />
+      </div>
+    </header>
+    <a href="https://www.linkedin.com/in/kowshikvalipireddy/"></a>
+    <a href="https://www.linkedin.com/in/kowshikvalipireddy/"
+      ><i class="bx bxl-linkedin" style="color: #0077b5"></i
+    ></a>
+    <section id="About">
+      <h1>About Me</h1>
+      <img src="HomeImage.svg" alt="|" style="max-width: 600px; margin: auto" />
+      <p>
+        Hello there! 👋 I'm kowshik, and I'm passionate about creating dynamic
+        and immersive web experiences. As I'm currently pursuing my bachelor's
+        degree in computer science with a keen interest in web development and a
+        specialization in the Python and MERN (MongoDB, Express.js, React.js,
+        Node.js) stack, I'm excited to embark on a journey of innovation and
+        problem-solving in the ever-evolving world of technology. During my
+        academic journey, I dedicated my time and energy to mastering the
+        intricacies of full-stack web development, with a focus on MERN
+        technologies.
+      </p>
+    </section>
+    <div id="Skills">
+      <h1>Skills</h1>
+      <img src="html.png" alt="/" />
+      <img src="free-css-logo-6563485-5453030.png" alt="/" />
+      <img src="javascript-logo.png" alt="/" />
+      <img src="react.png" alt="/" />
+      <img src="bootstrap-framework-logo.png" alt="/" />
+      <img src="nodejs.png" alt="/" />
+      <img src="mongo-db.png" alt="/" />
+      <img src="express.png" alt="/" />
+      <img src="python-language-logo.png" alt="/" />
+      <img src="jquery.png" alt="/" />
+      <img src="sql.png" alt="/" />
+      <img src="php.png" alt="/" />
+      <img src="sass.png" alt="/" />
+      <img src="typescript.png" alt="/" />
+      <img src="mysql.png" alt="/" />
+      <img src="git.png" alt="/" />
+      <img src="github.png" alt="/" />
+      <img src="django.png" alt="/" />
+      <img src="wordpress.png" alt="/" />
+      <img src="nextjs_icon_132160.png" alt="." />
+      <img src="graphql_logo_icon_171044.png" alt="." />
+    </div>
+    <div id="certificates">
+      <h1
+        style="
+          display: flex;
+          justify-content: center;
+          font-size: 4rem;
+          color: #fff;
+        "
+      >
+        Certificates
+      </h1>
+      <div class="certificate">
+        <a
+          href="https://www.udemy.com/certificate/UC-b5ca96fa-16a6-4b00-8710-e39e41782a76/"
+          ><img
+            src="UC-b5ca96fa-16a6-4b00-8710-e39e41782a76.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-7c22e765-c422-4638-881e-52a309249d36/"
+          ><img src="jquery.jpg" alt="/" style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-3b89011e-d51e-42ab-8b40-08ab6a6b01f5/"
+          ><img
+            src="learn mysql.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-ea1f7e67-b9ea-40d1-9ac0-7bd3524134b9/"
+          ><img
+            src="images/wordpress.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-02165063-3a50-4e67-93cc-658cc95aed7e/"
+          ><img
+            src="UC-02165063-3a50-4e67-93cc-658cc95aed7e.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-39e92522-fbaa-42dd-be3b-37532befc1ae/"
+          ><img
+            src="UC-39e92522-fbaa-42dd-be3b-37532befc1ae.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-b101728c-d4f7-4695-96e4-38f1076d8ee9/"
+          ><img
+            src="UC-b101728c-d4f7-4695-96e4-38f1076d8ee9.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-10955b90-7680-421d-b803-2b9ed8e2b363/"
+          ><img
+            src="UC-10955b90-7680-421d-b803-2b9ed8e2b363.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a
+          href="https://www.udemy.com/certificate/UC-4d19df3a-5f04-41a5-84de-59ea49b99d17/"
+          ><img
+            src="UC-4d19df3a-5f04-41a5-84de-59ea49b99d17.jpg"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+        <a href="https://www.hackerrank.com/certificates/ad6bc1564e9d"
+          ><img
+            src="download (1).png"
+            alt="/"
+            style="height: 20rem; width: 23rem"
+        /></a>
+    
+      </div>
+    </div>
+    <div id="projects">
+      <h1
+        style="
+          display: flex;
+          justify-content: center;
+          font-size: 4rem;
+          color: #fff;
+        "
+      >
+        Projects
+      </h1>
+      <a href="https://kowshik3383.github.io/Nature/"><img
+          src="LushLagoon - Google Chrome 26-11-2023 19_41_28.png"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a href="https://kowshik3383.github.io/Sushi-website/"><img
+        src="LushLagoon - Google Chrome 26-11-2023 19_47_10.png"
+        alt="/"
+        style="height: 20rem; width: 23rem"
+    /></a>
+    <a href="https://kowshik3383.github.io/Fit-hub/"><img
+      src="LushLagoon - Google Chrome 26-11-2023 19_53_35.png"
+      alt="/"
+      style="height: 20rem; width: 30rem"
+  /></a>
+  <a href="https://kowshik3383.github.io/journey-junkie/"><img
+    src="Journey Junkie - Google Chrome 14-11-2023 09_27_24.png"
+    alt="/"
+    style="height: 20rem; width: 30rem"
+/></a>
+<a href="https://bevel-spiny-booklet.glitch.me/Index.html"><img
+  src="Blog - Google Chrome 26-11-2023 20_19_26.png"
+  alt="/"
+  style="height: 20rem; width: 30rem"
+/></a>
+<a href="https://kowshik3383.github.io/coffee-hub/"><img
+  src="Blog - Google Chrome 26-11-2023 20_22_04.png"
+  alt="/"
+  style="height: 20rem; width: 30rem"
+/></a> 
+    </div>
+    
+    <div class="containerr">
+      <main class="row">
+        
+        <!--  *******   Left Section (Column) Starts   *******  -->
+  
+        <section class="col left">
+          
+          <!--  *******   Title Starts   *******  -->
+  
+          <div class="contactTitle">
+            <h2>Get In Touch</h2>
+          </div>
+  
+          <!--  *******   Title Ends   *******  -->
+  
+          <!--  *******   Contact Info Starts   *******  -->
+  
+          <div class="contactInfo">
+            
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="details">
+                <span>Phone</span>
+                <span>+91 8328107601</span>
+              </div>
+            </div>
+  
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="details">
+                <span>Email</span>
+                <span>kowshikvalipireddy@gmail.com</span>
+              </div>
+            </div>
+  
+            <div class="iconGroup">
+              <div class="icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="details">
+                <span>Location</span>
+                <span>Hyderabad,Telangana,India</span>
+              </div>
+            </div>
+  
+          </div>
+  
+          <!--  *******   Contact Info Ends   *******  -->
+  
+          <!--  *******   Social Media Starts   *******  -->
+  
+          <div class="socialMedia">
+            
+            <a href="https://www.instagram.com/_kowshik_v/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/kowshikvalipireddy/"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+  
+          <!--  *******   Social Media Ends   *******  -->
+  
+        </section>
+  
+        <!--  *******   Left Section (Column) Ends   *******  -->
+  
+        <!--  *******   Right Section (Column) Starts   *******  -->
+  
+        <section class="col right">
+          
+          <!--  *******   Form Starts   *******  -->
+  
+          <form class="messageForm">
+            
+            <div class="inputGroup halfWidth">
+              <input type="text" name="" required="required">
+              <label>Your Name</label>
+            </div>
+  
+            <div class="inputGroup halfWidth">
+              <input type="email" name="" required="required">
+              <label>Email</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <input type="text" name="" required="required">
+              <label>Subject</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <textarea required="required"></textarea>
+              <label>Say Something</label>
+            </div>
+  
+            <div class="inputGroup fullWidth">
+              <button>Send Message</button>
+            </div>
+  
+          </form>
+  
+          <!--  *******   Form Ends   *******  -->
+        </section>
+  
+        <!--  *******   Right Section (Column) Ends   *******  -->
+    <script src="script.js"></script>
+  </body>
+</html>
