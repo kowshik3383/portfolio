@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fody Slider</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      var TxtType = function (el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = "";
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtType.prototype.tick = function () {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) {
+          delta /= 2;
+        }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === "") {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        }
+
+        setTimeout(function () {
+          that.tick();
+        }, delta);
+      };
+
+      window.onload = function () {
+        var elements = document.getElementsByClassName("typewrite");
+        for (var i = 0; i < elements.length; i++) {
+          var toRotate = elements[i].getAttribute("data-type");
+          var period = elements[i].getAttribute("data-period");
+          if (toRotate) {
+            new TxtType(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML =
+          ".typewrite > .wrap { border-right: 0.08em solid #000 }";
+        document.body.appendChild(css);
+      };
+    </script>
+    <nav data-aos="zoom-in">
+      <ul class="nav-links" >
+        <li class="link"><a class="na" href="#">Home</a></li>
+        <li id="link1" class="link"><a class="na" href="#About">About</a></li>
+        <li id="link2" class="link"><a class="na" href="#Skills">Skills</a></li>
+        <li id="link4" class="link">
+          <a class="na" href="#certificates">Certifications</a>
+        </li>
+        <li id="link5" class="link">
+          <a class="na" href="#Skills">Contact</a>
+        </li>
+      </ul>
+      <button
+        class="btn"
+        href="https://www.linkedin.com/in/kowshikvalipireddy/"
+      >
+        Hire Me
+      </button>
+    </nav>
+
+    <header class="container" data-aos="zoom-in">
+      <div class="content">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <h4>CREATE YOUR SITE LIKE A PRO</h4>
+        <h1>
+          Hi, I'm <span>Kowshik Valipireddy</span>,
+          <h1>
+            <h1
+              style="color: #090a0d"
+              href=""
+              class="typewrite"
+              data-period="2000"
+              data-type='[ "Full Stack Developer", "Mern Stack Developer", "Front-end Developer", "Wordpress Developer" ]'
+            >
+              <span style="color: #090a0d" class="wrap"></span>
+            </h1>
+          </h1>
+        </h1>
+
+        <a   href="https://www.linkedin.com/in/kowshikvalipireddy/"
+          ><i style="margin-top: 4rem;" class="fa-brands fa-linkedin" style="color: #090a0d"></i
+        ></a>
+        <a  href="https://www.github.com/kowshik3383/"
+          ><i class="fa-brands fa-github" style="color: #090a0d"></i
+        ></a>
+      </div>
+      <div class="image">
+        <img src="header.png" />
+      </div>
+    </header>
+   
+    <section id="About" style="padding: 20px; color: black" data-aos="zoom-in-up">
+      <h1 style="color: #090a0d">About Me</h1>
+      <div style="text-align: center">
+        <img
+          src="HomeImage.svg"
+          alt="|"
+          style="max-width: 100%; height: auto; margin: auto"
+        />
+      </div>
+      <p style="text-align: justify">
+        Hello! My name is Kowshik Valipireddy. I am a Full Stack Web Developer.
+        I have a passion for MERN stack, Python Full Stack, and Wordpress. I
+        enjoy learning and implementing new web technologies. Currently, I am
+        empowering myself in the new age of web development, where I
+        continuously learn and explore new concepts and technologies.
+      </p>
+      <p style="text-align: justify">
+        Languages: Python,JavaScript, Php , C, HTML/CSS, <br />
+        Databases: MySQL, SQL ,MongoDB<br />
+        Libraries : Material UI, React, Bootstrap, Tailwind Frameworks: Next js
+        , Flask, Django, Node.js, Apache <br />
+        Tools & Technologies: Git, Docker, AWS, GCP, Heroku <br />
+        Other : Typescript ,Jquery , Graphql
+      </p>
+    </section>
+
+    <style>
+      @media screen and (min-width: 600px) {
+        #About {
+          padding: 40px;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        #About {
+          padding: 60px;
+        }
+      }
+    </style>
+
+    <section id="tranding" data-aos="zoom-in-up">
+      <div class="container">
+        <h1 id="Skills" class="text-center section-heading">Skills</h1>
+      </div>
+
+      <div class="container">
+        <div class="swiper tranding-slider">
+          <div class="swiper-wrapper">
+            <!-- Django-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="./django.png" alt="Tranding" />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Django</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- javascript -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://miro.medium.com/v2/resize:fit:800/1*bthRXJ_FBspSEijOWIRM2A.png"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Javascript</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!--react  -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://miro.medium.com/v2/resize:fit:2000/1*y6C4nSvy2Woe0m7bWEn4BA.png"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">React</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Graphql-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://everyday.codes/wp-content/uploads/2019/12/og_image.png"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Graphql</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- python -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwxLTzifORubxM6yXiPb9va_DrGQsV0PDBik4z-9482w&s"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Python</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Php -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://th.bing.com/th/id/OIG3.1vSQMOqbxShLnWyHm.d7?w=1024&h=1024&rs=1&pid=ImgDetMain"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Php</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- github -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="github-logo-git-hub-icon-with-text-on-white-and-black-background-free-vector.jpg"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Github</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Sql-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://play-lh.googleusercontent.com/_UzkEDYlu4kN4e4kX2r-VuNMaDbDW8UUID_GHQn3-4LeEMG0ZjqdZuShXijtLdUIvw"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Sql</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Mysql-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://five.co/wp-content/uploads/2023/02/Five.Co-The-MySQL-Logo.png"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Mysql</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!--Html-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://qph.cf2.quoracdn.net/main-qimg-1a68d0e30e4cd360db765e1e9718b5c1"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Html</h2>
+                  <h3 class="food-rating">
+                    <span>4.5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Css-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://www.elegantthemes.com/blog/wp-content/uploads/2021/01/000-Basic-CSS.png"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Css</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- mongodb-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://images.ctfassets.net/23aumh6u8s0i/6wTbGkTM3EBoO6hytvOcXj/d0144f86227382219fd2c8f4f53499c6/illustration"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Mongo-DB</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Express-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://media.licdn.com/dms/image/D4E12AQEBg943ptCYpg/article-cover_image-shrink_720_1280/0/1686391647921?e=2147483647&v=beta&t=sTfwUvcIfW7Fuby7hMluDfuRJK3HfYMMWc2SyZR7-GA"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Express</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Tailwind Css-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQMAgy_XeSr2CmOITAysaZtDxsVUSTSYtSM2EKE5ivhg&s"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Tailwind Css</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Bootstrap-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkp5dy5nX4YhAlCHySW0k8KtYWnmbx0V51Z9nqQES1SQ&s"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Bootstrap-5</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+
+            <!-- Next js-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQkNMCg3aBGo-Pob0Z3a-goo09E5M6umiK5Q&s"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Typescript</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Next js-->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img
+                  src="https://miro.medium.com/v2/resize:fit:1000/1*v3XndYeIsBtk4CkpMf7vmA.jpeg"
+                  alt="Tranding"
+                />
+              </div>
+              <div class="tranding-slide-content">
+                <div class="tranding-slide-content-bottom">
+                  <h2 class="food-name">Next-js</h2>
+                  <h3 class="food-rating">
+                    <span>5</span>
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <!-- Slide-end -->
+          </div>
+
+          <div class="tranding-slider-control">
+            <div class="swiper-button-prev slider-arrow">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </div>
+            <div class="swiper-button-next slider-arrow">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h1 id="certificates">Certifications</h1>
+    <main class="grid"  data-aos="zoom-in" >
+      <a   href="https://www.hackerrank.com/certificates/8a378760a2be">
+        <img src="download.png" alt="Sample photo" />
+      </a>
+      <a href="https://www.hackerrank.com/certificates/1c3fae289760">
+        <img src="download (1).png" alt="Sample photo" />
+      </a>
+      <a href="https://www.hackerrank.com/certificates/73ea6ff712f2">
+        <img src="download (2).png" alt="Sample photo" />
+      </a>
+      <a href="https://www.hackerrank.com/certificates/d4c27ce5c77b">
+        <img src="download (3).png" alt="Sample photo" />
+      </a>
+      <a href="https://www.hackerrank.com/certificates/d4c27ce5c77b">
+        <img src="download (4).png" alt="Sample photo" />
+      </a>
+      <a
+        href="https://www.udemy.com/certificate/UC-b5ca96fa-16a6-4b00-8710-e39e41782a76/"
+        ><img
+          src="UC-b5ca96fa-16a6-4b00-8710-e39e41782a76.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-7c22e765-c422-4638-881e-52a309249d36/"
+        ><img src="jquery.jpg" alt="/" style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-3b89011e-d51e-42ab-8b40-08ab6a6b01f5/"
+        ><img src="learn mysql.jpg" alt="/" style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-ea1f7e67-b9ea-40d1-9ac0-7bd3524134b9/"
+        ><img src="wordpress.jpg" alt="/" style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-02165063-3a50-4e67-93cc-658cc95aed7e/"
+        ><img
+          src="UC-02165063-3a50-4e67-93cc-658cc95aed7e.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-39e92522-fbaa-42dd-be3b-37532befc1ae/"
+        ><img
+          src="UC-39e92522-fbaa-42dd-be3b-37532befc1ae.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-b101728c-d4f7-4695-96e4-38f1076d8ee9/"
+        ><img
+          src="UC-b101728c-d4f7-4695-96e4-38f1076d8ee9.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-10955b90-7680-421d-b803-2b9ed8e2b363/"
+        ><img
+          src="UC-10955b90-7680-421d-b803-2b9ed8e2b363.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a
+        href="https://www.udemy.com/certificate/UC-4d19df3a-5f04-41a5-84de-59ea49b99d17/"
+        ><img
+          src="UC-4d19df3a-5f04-41a5-84de-59ea49b99d17.jpg"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+      <a href="https://www.hackerrank.com/certificates/ad6bc1564e9d"
+        ><img
+          src="download (5).png"
+          alt="/"
+          style="height: 20rem; width: 23rem"
+      /></a>
+    </main>
+    <!-- <div id="projects">
+		<h1
+		  style="
+			display: flex;
+			justify-content: center;
+			font-size: 4rem;
+			color: #fff;
+		  "
+		>
+		  Projects
+		</h1>
+		<a href="https://kowshik3383.github.io/Nature/"><img
+			src="LushLagoon - Google Chrome 26-11-2023 19_41_28.png"
+			alt="/"
+			style="height: 20rem; width: 23rem"
+		/></a>
+		<a href="https://kowshik3383.github.io/Sushi-website/"><img
+		  src="LushLagoon - Google Chrome 26-11-2023 19_47_10.png"
+		  alt="/"
+		  style="height: 20rem; width: 23rem"
+	  /></a>
+	  <a href="https://kowshik3383.github.io/Fit-hub/"><img
+		src="LushLagoon - Google Chrome 26-11-2023 19_53_35.png"
+		alt="/"
+		style="height: 20rem; width: 30rem"
+	/></a>
+	<a href="https://kowshik3383.github.io/journey-junkie/"><img
+	  src="Journey Junkie - Google Chrome 14-11-2023 09_27_24.png"
+	  alt="/"
+	  style="height: 20rem; width: 30rem"
+  /></a>
+  <a href="https://bevel-spiny-booklet.glitch.me/Index.html"><img
+	src="Blog - Google Chrome 26-11-2023 20_19_26.png"
+	alt="/"
+	style="height: 20rem; width: 30rem"
+  /></a>
+  <a href="https://kowshik3383.github.io/coffee-hub/"><img
+	src="Blog - Google Chrome 26-11-2023 20_22_04.png"
+	alt="/"
+	style="height: 20rem; width: 30rem"
+  /></a> 
+	  </div> -->
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="Vite + React - Google Chrome 22-03-2024 14_08_02.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Book Nest</h2>
+            <p>
+              The Book Nest project is a modern, full-stack web application
+              built using the MERN stack, comprising MongoDB, Express.js, React,
+              and Node.js. This project aims to create a fully responsive
+              website, ensuring an optimal user experience across various
+              devices, including desktops, tablets, and smartphones.
+            </p>
+            <p>
+              Tech Stack used : HTML, TailwindCSS, JavaScript, ReactJS, Node ,
+              Mongo-DB , Express
+            </p>
+            <a href="https://mern-hotel-website-7odt.vercel.app/">Live Demo</a>
+            <a
+              href="https://github.com/kowshik3383/mern-hotel-website/tree/main"
+              >Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="Vite + React - Google Chrome 22-03-2024 14_02_07.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Postcrafts</h2>
+            <p>
+              The Postcrafts project is a modern, full-stack web application
+              built using the MERN stack, comprising MongoDB, Express.js, React,
+              and Node.js. This project aims to create a fully responsive
+              website, ensuring an optimal user experience across various
+              devices, including desktops, tablets, and smartphones.
+            </p>
+            <p>
+              Tech Stack used : HTML, TailwindCSS, JavaScript, ReactJS, Node ,
+              Mongo-DB , Express
+            </p>
+            <a href="">Live Demo</a>
+            <a href="">Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="Vite + React - Google Chrome 22-03-2024 14_10_35.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Gym</h2>
+            <p>
+              Gym project is a contemporary, frontend react web application
+              developed utilizing the MERN stack, consisting of MongoDB,
+              Express.js, React, and Node.js. The project's primary objective is
+              to establish a fully responsive website, guaranteeing an
+              exceptional user experience across diverse devices, encompassing
+              desktops, tablets, and smartphones
+            </p>
+            <p>Tech Stack used : HTML, TailwindCSS, JavaScript, ReactJS</p>
+
+            <a href="https://react-gym-peach.vercel.app/">Live Demo</a>
+            <a href="https://github.com/kowshik3383/react-gym/tree/main"
+              >Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section" data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://kowshik3383.github.io/portfolio/Blog%20-%20Google%20Chrome%2026-11-2023%2020_22_04.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Coffee-hub</h2>
+            <p>
+              At Coffee-hub, we're committed to crafting engaging and intuitive
+              experiences that captivate your audience. With a focus on
+              front-end development, we bring your digital vision to life,
+              seamlessly blending creativity with functionality.
+            </p>
+            <p>Tech Stack used : HTML, JavaScript, Css</p>
+            <a href="https://kowshik3383.github.io/coffee-hub/">Live Demo</a>
+            <a href="https://github.com/kowshik3383/coffee-hub/tree/main"
+              >Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://kowshik3383.github.io/portfolio/Journey%20Junkie%20-%20Google%20Chrome%2014-11-2023%2009_27_24.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Journey-Junkie</h2>
+            <p>
+              Step into a world where words come alive and ideas flourish. My
+              frontend website is the gateway to an immersive blogging
+              experience, where creativity meets technology.
+            </p>
+            <p>Tech Stack used : HTML, TailwindCSS, JavaScript</p>
+            <a href="https://kowshik3383.github.io/journey-junkie/"
+              >Live Demo</a
+            >
+            <a href="https://github.com/kowshik3383/journey-junkietree/main"
+              >Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://kowshik3383.github.io/portfolio/Blog%20-%20Google%20Chrome%2026-11-2023%2020_19_26.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Blog</h2>
+            <p>
+              Embark on a journey of exploration and enlightenment as you enter
+              our frontend website—a portal to a universe of captivating
+              stories, insightful articles, and engaging content. Here's what
+              awaits yo
+            </p>
+            <p>Tech Stack used : HTML, TailwindCSS, JavaScript</p>
+            <a href="https://bevel-spiny-booklet.glitch.me/Index.html"
+              >Live Demo</a
+            >
+            <a href="https://github.com/kowshik3383/blog-website">Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://kowshik3383.github.io/portfolio/LushLagoon%20-%20Google%20Chrome%2026-11-2023%2019_53_35.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Fit-Club</h2>
+            <p>
+              Welcome to FitClub, your virtual fitness sanctuary where health
+              meets technology in perfect harmony. Our frontend website is
+              meticulously crafted to empower you on your journey to a
+              healthier, fitter you.
+            </p>
+            <p>Tech Stack used : HTML, CSS, JavaScript,</p>
+            <a href="https://kowshik3383.github.io/Fit-hub/">Live Demo</a>
+            <a href="https://github.com/kowshik3383/Fit-hub">Code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section"  data-aos="zoom-in">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="Visionary Builders - Google Chrome 22-03-2024 14_37_18.png"
+              alt="Team"
+            />
+          </div>
+          <div class="about-text">
+            <h2>Visionary-Builders</h2>
+            <p>
+              Welcome to Visionary-Builders, your digital hub for architectural
+              innovation and design excellence. Our frontend website is your
+              gateway to a world where imagination meets functionality, where
+              blueprints transform into breathtaking structures
+            </p>
+            <p>Tech Stack used : HTML, CSS, JavaScript , Bootstrap</p>
+            <a
+              href="https://visionary-builders-3t8jpawll-kowshik3383s-projects.vercel.app/"
+              >Live Demo</a
+            >
+            <a
+              href="https://github.com/kowshik3383/Visionary-Builders/tree/main"
+              >Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-container"  data-aos="zoom-in">
+        <div class="footer-column">
+          <h3>About Me</h3>
+          <p>
+            Crafting seamless digital experiences from front-end finesse <br> to back-end brilliance.
+
+
+
+
+
+
+
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Me</h3>
+          <p>Email: kowshikvalipireddy@gmail.com</p>
+          <p>Phone: 8328107601</p>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Me</h3>
+          
+            <a   href="https://www.linkedin.com/in/kowshikvalipireddy/"
+            ><i style="margin-top: 4rem;" class="fa-brands fa-linkedin" style="color: #090a0d"></i
+          ></a>
+          <a  href="https://www.github.com/kowshik3383/"
+            ><i class="fa-brands fa-github" style="color: #090a0d"></i
+          ></a>
+        
+        </div>
+      </div>
+    </footer>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
